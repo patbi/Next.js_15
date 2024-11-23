@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Navigation } from "./components/navigation";
+import { ClerkProvider } from '@clerk/nextjs';
 
 
 export const metadata: Metadata = {
@@ -13,17 +14,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-      <header className="bg-slate-900 text-white p-4 text-center">
-        {/*<p>Welcome to Next.js 15 classes</p>*/}
-      <Navigation />
-      </header>
-        {children}
-      <footer className="bg-slate-900 text-white p-4 text-center">
-        <p>See-Docs & Thenavigo</p>
-      </footer>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body>
+        <header className="bg-slate-900 text-white p-4 text-center">
+          {/*<p>Welcome to Next.js 15 classes</p>*/}
+        <Navigation />
+        </header>
+          {children}
+        <footer className="bg-slate-900 text-white p-4 text-center">
+          <p>See-Docs & Thenavigo</p>
+        </footer>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

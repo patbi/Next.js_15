@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SignInButton, UserButton, SignedIn, SignedOut } from '@clerk/nextjs';
 
 export const Navigation = () => {
 	const pathname = usePathname();
 
 	return (
-		<nav>
+		<nav className="flex justify-center items-center p-4">
 			<Link href="/" className={pathname === "/" ? "font-bold mr-4" : "text-blue-500 mr-4"}>
 				Home
 			</Link>
@@ -22,6 +23,12 @@ export const Navigation = () => {
 			>
 				Book 1
 			</Link>
+			<SignedOut>
+				<SignInButton mode="modal" />
+			</SignedOut>
+			<SignedIn>
+				<UserButton />
+			</SignedIn>
 		</nav>
 	);
 };
